@@ -14,4 +14,12 @@ export const types = {
   productoUpdated: "[Producto] UPDATED PRODUCTO",
   productoDelete: "[Producto] DELETED PRODUCTO",
   productoLogoutCleaning: "[Producto] LOGOUT CLEANING",
+
+  recetaAddNew: "[Receta] ADD NEW",
+  recetaActive: "[Receta] SET ACTIVE RECETA",
+  recetaLoad: "[Receta] LOAD RECETA",
+  recetaUpdated: "[Receta] UPDATED RECETA",
+  recetaDelete: "[Receta] DELETED RECETA",
+  recetaLogoutCleaning: "[Receta] LOGOUT CLEANING",
+  recetaSelectProduct: "[Receta] SELECT PRODUCTO",
 };

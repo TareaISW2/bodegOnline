@@ -38,3 +38,29 @@ export const setProductos = (productos) => ({
   type: types.productoLoad,
   payload: productos,
 });
+
+export const startSaveProducto = (producto) => {
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+    const productoToFirestore = { ...producto };
+    delete productoToFirestore.id;
+
+    await db
+      .doc(`${uid}/bodegonline/productos/${producto.id}`)
+      .update(productoToFirestore);
+  };
+};
+
+export const startDeleteProducto = (id) => {
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+    await db.doc(`${uid}/bodegonline/productos/${id}`).delete();
+
+    dispatch(deleteProducto(id));
+  };
+};
+
+export const deleteProducto = (id) => ({
+  type: types.productoDelete,
+  payload: id,
+});

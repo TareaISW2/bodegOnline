@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { JournalEntry } from "./JournalEntry";
+import { EntradaProducto } from "./EntradaProducto";
 
-export const JournalEntries = () => {
+export const EntradasProducto = () => {
   const { productos } = useSelector((state) => state.productos);
 
   return (
     <div className="journal__entries">
       {productos.map((producto) => (
-        <JournalEntry key={producto.id} {...producto} />
+        <EntradaProducto key={producto.id} {...producto} />
       ))}
     </div>
   );

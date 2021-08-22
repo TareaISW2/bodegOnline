@@ -20,6 +20,11 @@ import { Spinner } from "react-bootstrap";
 import { startLoadingProductos } from "../actions/productos";
 import { ModificarProducto } from "../components/producto/ModificarProducto";
 
+import { RecetaDashboard } from "../components/receta/RecetaDashboard";
+import { IngresarReceta } from "../components/receta/IngresarReceta";
+import { startLoadingReceta } from "../actions/recetas";
+import { ModificarReceta } from "../components/receta/ModificarReceta";
+
 export const AppRouter = () => {
   const dispatch = useDispatch();
   const [checking, setChecking] = useState(true);
@@ -32,6 +37,7 @@ export const AppRouter = () => {
         setIsLoggedIn(true);
 
         dispatch(startLoadingProductos(user.uid));
+        dispatch(startLoadingReceta(user.uid));
       } else {
         setIsLoggedIn(false);
       }
@@ -57,35 +63,48 @@ export const AppRouter = () => {
             isAuthenticated={isLoggedIn}
             component={AuthRouter}
           />
-
           <PrivateRoute
             exact
             path="/"
             isAuthenticated={isLoggedIn}
             component={BodegScreen}
           />
-
           <PrivateRoute
             exact
             path="/dashproductos"
             isAuthenticated={isLoggedIn}
             component={ProductoDashboard}
           />
-
           <PrivateRoute
             exact
             path="/ingresarproducto"
             isAuthenticated={isLoggedIn}
             component={IngresarProducto}
           />
-
           <PrivateRoute
             exact
             path="/modificarproducto"
             isAuthenticated={isLoggedIn}
             component={ModificarProducto}
           />
-
+          <PrivateRoute
+            exact
+            path="/dashrecetas"
+            isAuthenticated={isLoggedIn}
+            component={RecetaDashboard}
+          />
+          <PrivateRoute
+            exact
+            path="/ingresarreceta"
+            isAuthenticated={isLoggedIn}
+            component={IngresarReceta}
+          />
+          <PrivateRoute
+            exact
+            path="/modificarreceta"
+            isAuthenticated={isLoggedIn}
+            component={ModificarReceta}
+          />
           <Redirect to="/auth/login" />
         </Switch>
       </div>

@@ -1,10 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { JournalEntries } from "./JournalEntries";
-export const Sidebar = () => {
+import { EntradasReceta } from "./EntradasReceta";
+export const SidebarReceta = () => {
   const { name } = useSelector((state) => state.auth);
-
   return (
     <aside className="journal__sidebar">
       <div className="journal__sidebar-navbar">
@@ -14,7 +13,7 @@ export const Sidebar = () => {
         </h3>
       </div>
 
-      <JournalEntries />
+      <EntradasReceta />
     </aside>
   );
 };

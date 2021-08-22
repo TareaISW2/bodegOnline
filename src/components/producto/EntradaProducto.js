@@ -1,9 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { activeProducto } from "../../actions/productos";
+import { useSelector } from "react-redux";
+import { selectProductos } from "../../actions/recetas";
 
-export const JournalEntry = ({ id, nombre, unidad, cantidad, precio }) => {
+export const EntradaProducto = ({ id, nombre, unidad, cantidad, precio }) => {
   const dispatch = useDispatch();
+
+  const { active: producto } = useSelector((state) => state.productos);
 
   const handleEntryClick = () => {
     dispatch(
@@ -14,6 +18,8 @@ export const JournalEntry = ({ id, nombre, unidad, cantidad, precio }) => {
         precio,
       })
     );
+
+    producto ? dispatch(selectProductos(producto)) : console.log(); //agrega productos a la lista de productos en receta
   };
 
   return (

@@ -1,17 +1,3 @@
-/*
-    {
-        productos: [],
-        active: null,
-        active: {
-            id: AS12JNJASDNJSAKD,
-            nombre: '',
-            kg: '',
-            precio: int,
-            cantidad: int,
-        }
-    }
-*/
-
 import { types } from "../types/types";
 
 const initialState = {
@@ -33,6 +19,15 @@ export const productosReducer = (state = initialState, action) => {
         active: {
           ...action.payload,
         },
+      };
+
+    case types.productoDelete:
+      return {
+        ...state,
+        active: null,
+        productos: state.productos.filter(
+          (producto) => producto.id !== action.payload
+        ),
       };
 
     default:
